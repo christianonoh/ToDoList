@@ -1,0 +1,9 @@
+body {
+  background-color: bisque;
+  text-align: center;
+}
+
+.hello {
+  color: blue;
+  font-size: 1.5rem;
+}
