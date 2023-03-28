@@ -9,6 +9,6 @@ const component = () => {
   element.classList.add('hello');
 
   return element;
-}
+};
 
 document.body.appendChild(component());
