@@ -1,9 +1,75 @@
-body {
-  background-color: bisque;
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.hello {
-  color: blue;
-  font-size: 1.5rem;
+body {
+  display: flex;
+  justify-content: center;
+  margin-top: 10vh;
+  background-color: bisque;
+}
+
+main {
+  width: 30rem;
+  background-color: aliceblue;
+}
+
+.heading,
+.input-task,
+button {
+  display: flex;
+  width: 100%;
+  border-bottom: 2px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+}
+
+.heading {
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+}
+
+.input-task {
+  background-color: #fff;
+  padding: 0.8rem 1rem;
+}
+
+input[type="text"] {
+  height: 100%;
+  width: 90%;
+
+  /* padding: 0.5rem; */
+  border: 0;
+}
+
+button {
+  border: 0;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+#tasks {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+}
+
+.task-item {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #ebe9e9;
+}
+
+.task-item-content {
+  display: flex;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  margin-right: 0.5rem;
 }
