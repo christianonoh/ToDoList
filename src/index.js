@@ -33,13 +33,3 @@ tasksArray.forEach((task) => {
   </span>
 </li>`;
 });
-
-// class Tasks{
-//   constructor() {
-//     this.taskList = document.getElementById('tasks');
-//     this.submitButton = document.getElementById('submitButton');
-//     this.
-//   }
-// }
-
-// document.body.appendChild(component());
