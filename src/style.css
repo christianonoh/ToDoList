@@ -50,7 +50,12 @@ input[type="text"] {
   padding-left: 1rem;
 }
 
-input[type="text"]:focus {
+.description {
+  overflow-x: hidden;
+}
+
+input[type="text"]:focus,
+.description:focus {
   outline: none;
 }
 
