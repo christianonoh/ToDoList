@@ -16,10 +16,23 @@ export default class Task {
   
       this.taskContainer.addEventListener('click', (event) => {
         if (event.target.classList.contains('delete-task')) {
-          alert('yes');
           const { index } = event.target.parentElement.parentElement.dataset;
           this.deleteTask(index);
         }
+      });
+  
+      this.taskContainer.addEventListener('input', (event) => {
+        if (event.target.classList.contains('description')) {
+          const { index } = event.target.parentElement.parentElement.dataset;
+          const newDescription = event.target.textContent;
+          this.editTask(index, newDescription);
+        }
+      });
+  
+      this.clearButton.addEventListener('click', () => {
+        localStorage.clear();
+        this.taskContainer.innerHTML = '';
+        this.tasksArray = [];
       });
     }
   
@@ -31,19 +44,25 @@ export default class Task {
       };
       this.tasksArray.push(newTask);
       this.displayTasks(newTask);
-      this.reindexTasks();
+      this.updateLocalStorage();
     }
   
     deleteTask(index) {
       this.tasksArray.splice(index - 1, 1);
       this.reindexTasks();
       this.displayAllTasks();
+      this.updateLocalStorage();
+    }
+  
+    editTask(index, newDescription) {
+      const task = this.tasksArray[index - 1];
+      task.description = newDescription;
+      this.updateLocalStorage();
     }
   
     reindexTasks() {
       this.tasksArray.forEach((task, index) => {
         task.index = index + 1;
-        localStorage.setItem('tasksArray', JSON.stringify(this.tasksArray));
       });
     }
   
@@ -52,7 +71,7 @@ export default class Task {
         <li class="task-item" data-index="${task.index}">
           <span class="task-item-content">
             <input type="checkbox">
-            <span contenteditable="true" class="description">${task.description} at position ${task.index}</span>
+            <span contenteditable="true" class="description">${task.description}</span>
           </span>
           <span class="move-task">
             <i class="delete-task fa fa-trash-o" aria-hidden="true"></i>
@@ -65,6 +84,10 @@ export default class Task {
     displayAllTasks() {
       this.taskContainer.innerHTML = '';
       this.tasksArray.forEach((task) => this.displayTasks(task));
+    }
+  
+    updateLocalStorage() {
+      localStorage.setItem('tasksArray', JSON.stringify(this.tasksArray));
     }
   }
 
