@@ -67,17 +67,54 @@ export default class Task {
   }
 
   displayTasks(task) {
-    this.taskContainer.innerHTML += `
-        <li class="task-item" data-index="${task.index}">
-          <span class="task-item-content">
-            <input type="checkbox">
-            <span contenteditable="true" class="description">${task.description}</span>
-          </span>
-          <span class="move-task">
-            <i class="delete-task fa fa-trash-o" aria-hidden="true"></i>
-            <i class="fa mover fa-ellipsis-v" aria-hidden="true"></i>
-          </span>
-        </li>`;
+    // Create the li element with class "task-item" and data-index attribute
+    const li = document.createElement('li');
+    li.classList.add('task-item');
+    li.setAttribute('data-index', task.index);
+    
+    // Create the span element with class "task-item-content"
+    const contentSpan = document.createElement('span');
+    contentSpan.classList.add('task-item-content');
+    
+    // Create the checkbox element
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    
+    // Create the span element with class "description" and contenteditable attribute
+    const descriptionSpan = document.createElement('span');
+    descriptionSpan.classList.add('description');
+    descriptionSpan.contentEditable = true;
+    descriptionSpan.textContent = `${task.description}, completed status: ${task.completed} at index ${task.index}`;
+    
+    // Append the checkbox and description spans to the content span
+    contentSpan.appendChild(checkbox);
+    contentSpan.appendChild(descriptionSpan);
+    
+    // Create the span element with class "move-task"
+    const moveSpan = document.createElement('span');
+    moveSpan.classList.add('move-task');
+    
+    // Create the delete button and the mover icon
+    const deleteBtn = document.createElement('i');
+    deleteBtn.classList.add('delete-task', 'fa', 'fa-trash-o');
+    deleteBtn.setAttribute('aria-hidden', true);
+    
+    const moverIcon = document.createElement('i');
+    moverIcon.classList.add('fa', 'mover', 'fa-ellipsis-v');
+    moverIcon.setAttribute('aria-hidden', true);
+    
+    // Append the delete button and the mover icon to the move span
+    moveSpan.appendChild(deleteBtn);
+    moveSpan.appendChild(moverIcon);
+    
+    // Append the content span and the move span to the li element
+    li.appendChild(contentSpan);
+    li.appendChild(moveSpan);
+    
+    // Append the li element to the task container
+    this.taskContainer.appendChild(li);
+    
+    // Clear the task description input field
     document.getElementById('task-description').value = '';
   }
 
