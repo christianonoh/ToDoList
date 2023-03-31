@@ -131,3 +131,8 @@ input[type="checkbox"] {
 .mover:hover {
   cursor: move;
 }
+
+.task-completed {
+  text-decoration: line-through;
+  color: darkgray;
+}
