@@ -9,6 +9,7 @@ body {
   justify-content: center;
   margin-top: 10vh;
   background-color: #e0f0e5;
+  font-family: 'Open Sans', sans-serif;
 }
 
 main {
@@ -24,12 +25,6 @@ input[type="text"] {
   min-height: 2.5rem;
 }
 
-.heading {
-  color: #10a58a;
-  padding: 0.8rem 1rem;
-  font-size: 1rem;
-}
-
 .heading,
 .input-task,
 #clear-button {
@@ -38,6 +33,17 @@ input[type="text"] {
   border-bottom: 2px;
   align-items: center;
   justify-content: space-between;
+}
+
+.heading {
+  color: #10a58a;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  justify-content: flex-start;
+}
+.logoicon { 
+  margin-right: 0.5rem;
+  font-weight: bold;
 }
 
 .input-task {

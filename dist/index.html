@@ -4,11 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Burger</title>
+  <script src="https://kit.fontawesome.com/2eac604974.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <title>TaskMaster</title>
 <script defer src="runtime.bundle.js"></script><script defer src="main.bundle.js"></script></head>
 
 <body>
-  <h1>Hello Burger mf!!!!</h1>
+  <main class="main">
+    <h2 class="heading"><i class="fa fa-check logoicon fa-lg" aria-hidden="true"></i>TaskMaster</h2>
+    <div class="input-task">
+      <input maxlength="100" id="task-description" required type="text" placeholder="Add to your list...">
+      <button id="submit-button"><i class="fa-solid fa-circle-plus"></i></button>
+    </div>
+    <ul id="tasks"></ul>
+    <button id="clear-button">Clear all completed</button>
+  </main>
 </body>
 
 </html>
