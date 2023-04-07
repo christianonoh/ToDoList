@@ -7,7 +7,6 @@ import {
   displayTasks, updateLocalStorage, tasksArray, reindexTasks, displayAllTasks,
 } from '../src/modules/task.js';
 
-jest.mock('../__mock__/testlist.js');
 jest.mock('../src/modules/task.js', () => ({
   displayTasks: jest.fn(),
   updateLocalStorage: jest.fn(),
