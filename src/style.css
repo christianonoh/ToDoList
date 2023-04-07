@@ -41,7 +41,8 @@ input[type="text"] {
   font-size: 1rem;
   justify-content: flex-start;
 }
-.logoicon { 
+
+.logoicon {
   margin-right: 0.5rem;
   font-weight: bold;
 }
