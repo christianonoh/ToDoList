@@ -2,6 +2,9 @@
 /* eslint-disable import/no-mutable-exports */
 import addTask from './addTask.js';
 import deleteTask from './deleteTask.js';
+import editTask from './editTask.js';
+import toggleCompleted from './toggleCompleted.js';
+import clearCompleted from './clearCompleted.js';
 
 const taskContainer = document.getElementById('tasks');
 export let tasksArray = JSON.parse(localStorage.getItem('tasksArray')) || [];
@@ -29,19 +32,6 @@ function updateLocalStorage() {
   localStorage.setItem('tasksArray', JSON.stringify(tasksArray));
 }
 
-function editTask(index, newDescription) {
-  const task = tasksArray[index - 1];
-  task.description = newDescription;
-  updateLocalStorage();
-}
-
-function toggleCompleted(index) {
-  const task = tasksArray[index - 1];
-  task.completed = !task.completed;
-  updateLocalStorage();
-  displayAllTasks();
-}
-
 function init() {
   tasksArray.forEach((task) => displayTasks(task));
   main.addEventListener('click', (event) => {
@@ -56,7 +46,7 @@ function init() {
         addTask(description);
       }
     } else if (event.target.matches('#clear-button')) {
-      tasksArray = tasksArray.filter((task) => !task.completed);
+      tasksArray = clearCompleted();
       reindexTasks();
       displayAllTasks();
       updateLocalStorage();
@@ -78,5 +68,5 @@ function init() {
 init();
 
 export {
-  editTask, reindexTasks, displayTasks, displayAllTasks, updateLocalStorage, toggleCompleted,
+  reindexTasks, displayTasks, displayAllTasks, updateLocalStorage,
 };

@@ -31,6 +31,7 @@ describe('addTask', () => {
     expect(displayTasks).toHaveBeenCalledWith({ description: 'Buy groceries', index: 1, completed: false }); // check that displayTasks has been called with the correct argument
     expect(updateLocalStorage).toHaveBeenCalled(); // check that updateLocalStorage has been called
   });
+
   test('deletes a task from tasksArray', () => {
     // Act
     deleteTask(1);
