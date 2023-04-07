@@ -2,42 +2,35 @@
  * @jest-environment jsdom
  */
 
-import { addTask } from "../src/modifyTask";
+const listArr = [
+  {
+    description: "test",
+    index: 1,
+    completed: false,
+  },
+];
 
-jest.mock('../__mock__/testlist');
-// jest.mock('../src/modifyTask', () => ({
-//     displayTasks: jest.fn(),
-//     updateLocalStorage: jest.fn(),
-//   }));
-  
-  describe('addTask', () => {
+// import { addTask } from "../src/modifyTask";
+jest.mock("../__mock__/testlist");
+jest.mock("../src/task");
+jest.mock("../src/modifyTask");
 
-    test('adds a new task to the tasksArray', () => {
-      // Arrange
-      const des = 'Buy groceries';
-      const listArr = JSON.parse(localStorage.getItem('listArr'));
-      // Act
-      addTask("des");
-  
-      // Assert
-      const newListArr = JSON.parse(localStorage.getItem('listArr'));
-      expect(newListArr.length).toBe(listArr.length + 1);
-      expect(listArr[1].description).toBe("des");
-    });
-  
-    test('calls displayTasks and updateLocalStorage with the new task', () => {
-      // Arrange
-      const des = 'Clean the house';
-  
-      // Act
-      addTask(des);
-  
-      // Assert
-      expect(displayTasks).toHaveBeenCalledWith({
-        description: des,
-        index: 1,
-        completed: false,
-      });
-      expect(updateLocalStorage).toHaveBeenCalled();
-    });
+describe("addTask", () => {
+  test("adds a new task to the tasksArray", () => {
+    // Arrange
+    document.body.innerHTML =
+      '<div class="input-task">' +
+      '<input maxlength="100" id="task-description" required type="text" placeholder="Input your tasks...">' +
+      '<button id="submit-button" class="submit-button"></button>' +
+      "</div>";
+    const list = JSON.parse(localStorage.getItem("list")) || [];
+    // Act
+    addTask('Buy groceries');
+    const newList = JSON.parse(localStorage.getItem("list"));
+    const newListLength = newList.length;
+
+    /* Assert */
+    expect(newListLength).toBe(list.length + 1);
+    expect(newList[newListLength - 1].description).toBe("newTask");
   });
+});

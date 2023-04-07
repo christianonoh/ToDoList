@@ -1,17 +1,21 @@
-export function addTask(des) {
-  const newTask = {
-    description: des,
-    index: this.tasksArray.length + 1,
-    completed: false,
-  };
-  this.tasksArray.push(newTask);
-  this.displayTasks(newTask);
-  this.updateLocalStorage();
-}
+import { displayTasks, updateLocalStorage, reindexTasks, displayAllTasks, tasksArray } from './task';
 
-export function deleteTask(index) {
-  this.tasksArray.splice(index - 1, 1);
-  this.reindexTasks();
-  this.displayAllTasks();
-  this.updateLocalStorage();
-}
+function addTask(des) {
+  const newTask = {
+  description: des,
+  index: tasksArray.length + 1,
+  completed: false,
+  };
+  tasksArray.push(newTask);
+  displayTasks(newTask);
+  updateLocalStorage();
+  }
+  
+  function deleteTask(index) {
+  tasksArray.splice(index - 1, 1);
+  reindexTasks();
+  displayAllTasks();
+  updateLocalStorage();
+  }
+
+export { addTask, deleteTask };
